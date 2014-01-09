@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style type="text/css">
+  * {box-sizing: border-box;}
+  body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica';
+    font-weight: lighter;
+    line-height: 20px;
+  }
+  p {
+    margin: 0 0 15px;
+  }
+  </style>
+  <link rel="stylesheet" type="text/css" href="css/z-scroll.css" />
+
+  <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="js/z-scroll.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+      $('.zpanels').zscroll();
+    });
+
+  </script>
+
+</head>
+<body>
+
+  <div class="zpanels panelWrapper">
+    <div class="panel">
+      <h1>What is Z-Scrolling?</h1>
+      <p>Traditional web applications mostly scroll along the y-axis, and sometimes the x-axis. With CSS3 transformations and a little jQuery magic, we can have pages that move along the z-axis; creating a 3rd dimension of movement.</p>
+      <p>Panels can be designed to hold any kind of content and then are either zoomed behind us, or away from us depending on our direction of travel. We can attach this effect to the mousewheel, or to some buttons (for mobile devices).</p>
+      <p>Scroll to learn more</p>
+    </div>
+    <div class="panel">
+      <p>The effect itself is pretty cool, but depending on how it's implemented, it can lead to an unpleasant user experience. Essentially we are using a single CSS transition on panels, then multiple classes that use CSS transform to scale the panels depending on our direction of travel.</p>
+      <p>The value that we use for the scaling is our point of contention. Should the value be controlled by the amount of scroll, or just set to predetermined numbers where scrolling just moves from one panel to the next?</p>
+      <p>Keep scrolling or scroll back...</p>
+    </div>
+    <div class="panel">
+      <p>When binding the scale value to the scroll amount the panels would get larger and larger and in some browsers the text would flash as giant pixelated letters before being re-rendered as smooth vectors (which is what text is). For images, this could become a nightmare. The effect is a bit more interactive, but not as good of a presentation.</p>
+      <p>Keep scrolling or scroll back...</p>
+    </div>
+    <div class="panel">
+      <p>To overcome this, I've programmed the approprate scale values into the CSS classes so that a user only needs to scroll a tiny amount to move on the z-axis towards the next panel, or backwards to the previous one. It's slightly less control, but there is no problem of the panels becoming 'ugly' as we move up and down the z-axis.</p>
+      <p>I've also prevented from over-scrolling by only allowing one transition at a time. Otherwise, the management of css classes becomes problematic and causes the effect to break.</p>
+      <p>Keep scrolling or scroll back...</p>
+    </div>
+    <div class="panel">
+      <p>I think you'll agree that while this z-scroll is not quite as fluid as the x or y scrolling we are already accustomed to, the effect is still quite useful when a unique web experience is desired.</p>
+      <p>Scroll once more to see that it even works with other layouts, and panels with scrolling content.</p>
+      <p>Keep scrolling or scroll back...</p>
+    </div>
+    <div class="panel container">
+      <div class="subPanel" style="width:250px; height:300px; float:left;">
+        <p>Sub-panels have a special class that stops the scroll event from propagating up to where the z-scroll function is called.</p>
+        <p>Scrolling while over sub-panels like these will not do anything other than scroll the content. This is a little problematic for mobile layouts so use caution.</p>
+        <p>Move the mouse off a sub-panel to scroll back.</p>
+      </div>
+      <div class="subPanel" style="width:220px; height:150px; float:right; margin:0 0 10px;">
+        <p>This panel only has a little content but still prevents z-axis travel.</p>
+      </div>
+      <div class="subPanel" style="width:220px; height:140px; float:right;">
+        <p>This panel has much more text and can be scrolled using traditional methods. Duis consequat nec arcu vitae tincidunt. Pellentesque pharetra ultricies eros vel convallis. Sed pellentesque vel tellus non lacinia. Nulla ut cursus ante. Phasellus in ipsum vitae magna lacinia sollicitudin. Duis vel facilisis eros, ut congue ante. Donec laoreet massa sit amet libero adipiscing tincidunt. In hac habitasse platea dictumst. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras aliquet urna at volutpat euismod. Donec dignissim facilisis lacinia.</p>
+      </div>
+    </div>    
+  </div>
+
+</body>
+</html>

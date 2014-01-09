@@ -1,0 +1,76 @@
+.panelWrapper {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  background: #000;
+  width: 100%;
+  height: 100%;
+}
+
+/* by default panels are scaled out. doing this makes 
+   the initial zoom in possible. otherwise they just fade in
+   because there's no scale difference between default and .visible */
+.panel {
+  padding: 10px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 500px;
+  height: 300px;
+  background: #333;
+  color: #FFF;
+  border: solid 1px #0AF;
+  opacity: 0;
+  transition: all linear 0.5s;
+  -webkit-transtion: all linear 0.5s;
+  text-align: justify;
+  transform: scale(0,0);
+  -ms-transform: scale(0,0);
+  -webkit-transform: scale(0,0);
+}
+
+/* this just makes sure that visible panels are visible and at 1x scale */
+.panel.visible {
+  opacity: 1;
+  transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  -webkit-transform: scale(1,1);
+}
+
+/* this style makes panels fade away as they zoom behind us, the illusion of moving into them */
+.visible.behind {
+  opacity: 0;
+  transform: scale(4,4);
+  -ms-transform: scale(4,4);
+  -webkit-transform: scale(4,4);
+}
+
+/* this style makes panels fade away as they zoom away from us */
+.visible.infront {
+  opacity: 0;
+  transform: scale(0,0);
+  -ms-transform: scale(0,0);
+  -webkit-transform: scale(0,0);
+}
+
+/* this style is used to make sure that the panels we've passed are
+   still 'behind' us and they are scaled back down when made visible.
+   without it, they just fade back in at 1x scale. */
+.panel.passed {
+  opacity: 0;
+  transform: scale(4,4);
+  -ms-transform: scale(4,4);
+  -webkit-transform: scale(4,4);
+}
+
+.panel.container {
+  border: none;
+  background: none;
+}
+
+.panel.container .subPanel {
+  border: solid 1px #0AF;
+  padding: 10px;
+  background: #333;
+  overflow: auto;
+}
